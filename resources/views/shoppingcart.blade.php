@@ -50,6 +50,17 @@
             <td>Total</td>
             <td><?php echo Cart::total(); ?></td>
         </tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+            @if(Auth::guard('khachhangs')->check())
+                <?php
+                $kh = DB::table('khachhangs')->find(Auth::guard('khachhangs')->id());
+                echo $kh->ten_kh;
+                Session::put('demo', $kh->id);
+                ?>
+            @endif
+            <td> <a href="/demo-project/pay"  class="Pay">GetPay</a></td>
+        </tr>
 
     </table>
     </form>

@@ -63,3 +63,6 @@ Route::post('dn',[
     'uses' => 'UserAuth\LoginController@PostLogin'
 ]);
 //Route::get('cap-nhat/{id}',['as'=>'capnhat','uses'=>'giohangcontroller@capnhat']);
+Route::group(['prefix'=> '/pay', 'middleware' => 'pay'], function () {
+    Route::get('/','giohangcontroller@pay');
+});

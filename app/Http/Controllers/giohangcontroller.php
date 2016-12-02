@@ -6,9 +6,10 @@ namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use App\Donhangs;
+use App\Chitietdonhangs;
+use Carbon\Carbon;
 
 class giohangcontroller extends Controller {
 
@@ -46,4 +47,23 @@ public  function capnhat(){
    }
 
 }
+    public function pay(Request $request){
+        $save = Donhangs::create(['khachhangs_id'=> $request->session()->get('demo'),
+            'ngay_lap' => Carbon::now()]);
+        $save->save();
+        $dh = Donhangs::select()->where('khachhangs_id', $request->session()->get('demo'))->orderBy('id', 'desc')->first();
+        $cart = Cart::content();
+        foreach ($cart as $c){
+            $ct =  Chitietdonhangs::create([
+                'sanphams_id' => $c->id,
+                'donhangs_id' => $dh->id,
+                'so_luong' => $c->qty,
+                'don_gia' => $c->price,
+            ]);
+            $ct->save();
+        }
+        Cart::destroy();
+        echo "oke";
+        return redirect('/');
+    }
 }

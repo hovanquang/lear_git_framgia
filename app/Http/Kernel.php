@@ -57,7 +57,7 @@ class Kernel extends HttpKernel
 
 
         'member'    => \App\Http\Middleware\RedirectIfNotUser::class,
-
+        'pay' =>  \App\Http\Middleware\checkPay::class,
 
     ];
 }
