@@ -56,13 +56,13 @@
     <div class="header">
         <div class="headertop_desc">
             <div class="call">
-                <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
+                <p><span>Need help?</span> call us <span class="number">0972793680</span></p>
             </div>
             <div class="account_desc">
                 @if(!Auth::guard('khachhangs')->check())
                 <ul>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="{{url('/login')}}">Login</a></li>
+                    <li><a href="{{url('/dk')}}">Register</a></li>
+                    <li><a href="{{url('/Login')}}">Login</a></li>
                     <li><a href="#">Delivery</a></li>
                     <li><a href="#">Checkout</a></li>
                     <li><a href="#">My Account</a></li>
@@ -93,7 +93,7 @@
                 <a href="index.html"><img src="images/logo.png" alt="" /></a>
             </div>
             <div class="cart">
-                <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2">  <a href="{!! asset('gio-hang') !!}"> $<?php echo Cart::total(); ?></a>
+                <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> <a href="{!! asset('gio-hang') !!}"> $<?php echo Cart::total(); ?></a>
                     <ul class="dropdown">
                         <a href="{!! asset('gio-hang') !!}"></a>
                         {{--<li>you have no items in your Shopping cart</li>--}}
